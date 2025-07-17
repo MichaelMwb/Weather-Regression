@@ -17,7 +17,7 @@ print(weather)
 #avg_temp, snow_depth, temp_max, and temp_min, respectively. The new dataframe is assigned to a variable named real_weather.
 real_weather = weather[["PRCP", "SNOW","TAVG","SNWD", "TMAX", "TMIN"]].copy()
 real_weather.columns = ["precip", "snow","avg_temp","snow_depth", "temp_max", "temp_min"]
-#prints to consoles
+#prints to consoles-
 real_weather
 #calculates the proportion of missing values in each column of the real_weather dataframe and prints the result to the console.
 real_weather.apply(pd.isnull).sum()/real_weather.shape[0]
