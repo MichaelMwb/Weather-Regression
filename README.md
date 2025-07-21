@@ -2,37 +2,7 @@
 This is a linear regression model to predict weather based on Atlanta Hartsfield-Jackson International Airport Station from the years 1990-2023 using the variables of precipitation, average temperature, maximum temperature, minimum temperature, date, average wind speed, and peak gust wind speed 
 #This code is a Python script that uses the pandas library1 to perform some data analysis and manipulation on a weather dataset. 
 #It also uses the sklearn library to perform ridge regression. - my
-# on the data and evaluate the model performance.
-#The first line imports the pandas library as pd, 
-#which is a common alias for pandas.
-import pandas as pd
-#reads a CSV file named “Weather_DATASET.csv” and assigns it to a variable named weather.
-#The index_col argument specifies that the first column of the file contains the date values 
-#that should be used as the row index of the dataframe.
-weather = pd.read_csv("Weather_DATASET.csv", index_col = "DATE")
-#prints the weather dataframe to the console.
-print(weather)
-#creates a copy of a subset of the weather dataframe that contains only the 
-#columns PRCP, SNOW, TAVG, SNWD, TMAX, and TMIN. These columns are renamed as precip, snow, 
-#avg_temp, snow_depth, temp_max, and temp_min, respectively. The new dataframe is assigned to a variable named real_weather.
-real_weather = weather[["PRCP", "SNOW","TAVG","SNWD", "TMAX", "TMIN"]].copy()
-real_weather.columns = ["precip", "snow","avg_temp","snow_depth", "temp_max", "temp_min"]
-#prints to consoles-
-real_weather
-#calculates the proportion of missing values in each column of the real_weather dataframe and prints the result to the console.
-real_weather.apply(pd.isnull).sum()/real_weather.shape[0]
-#counts the frequency of each value in the snow column of the real_weather dataframe and prints the result to the console.
-real_weather["snow"].value_counts()
-#real_weather.apply(pd.isnull).sum()/real_weather.shape[0]
-#real_weather["avg_temp"].value_counts()
-#del real_weather["avg_temp"]
-del real_weather["snow"]
-real_weather["snow_depth"].value_counts()
-del real_weather["snow_depth"]
-#filters the real_weather dataframe to select only the 
-#rows where the precip column has a missing value and prints the result to the console.
-real_weather[pd.isnull(real_weather["precip"])]
-real_weather["precip"].value_counts()
+
 # fills the missing values in the precip column 
 #of the real_weather dataframe with zero and assigns the result back to the same column.
 real_weather["precip"] = real_weather["precip"].fillna(0)
