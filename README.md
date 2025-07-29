@@ -3,3 +3,4 @@ This is a linear regression model to predict weather based on Atlanta Hartsfield
 #This code is a Python script that uses the pandas library1 to perform some data analystis and manipulation on a weather dataset.  
 #It also uses the sklearn library to perform ridge regression. bbb
 
+n
