@@ -4,4 +4,4 @@ This is a linear regression model to predict weather based on Atlanta Hartsfield
 #It also uses the sklearn library to perform ridge regression. bbb
 
 n
-df
+d
