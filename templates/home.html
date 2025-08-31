@@ -113,9 +113,16 @@
                                         <input type="hidden" id="selectedVariable" name="selectedVariable">
                                     </div>
                                     <input type="hidden" id="forecastClicked" name="forecastClicked" value="false">
-                                    <div id="uploadButtonDiv" style="display: none; text-align: center; margin-top: 20px;">
-                                        <input type="button" value="Upload & Forecast" class="btn btn-primary" onclick="submitForecast()">
-                                    </div>
+                                   <div id="uploadButtonDiv" style="display: none; text-align: center; margin-top: 20px;">
+  <input type="button" value="Upload & Forecast" class="btn btn-primary" onclick="submitForecast()">
+</div>
+
+<!-- Spinner (hidden until submit) -->
+<div id="spinner" style="display:none; text-align:center; margin-top:15px;">
+  <div class="spinner-border text-light" role="status" aria-hidden="true"></div>
+  <p style="color:white; margin-top:5px;">Generating forecast...</p>
+</div>
+
                                     <div id="tableWrapper">
                                         {% if output_table %}
                                             <div id="tableContainer">
@@ -215,11 +222,26 @@ function clearForm() {
         fileUploaded = false;
     }
 }
-    function submitForecast() {
-    var form = document.querySelector('form');
-    form.elements.namedItem("forecastClicked").value = "true";
-    form.submit();
-}
+ 
+  function submitForecast() {
+    // show spinner
+    var sp = document.getElementById('spinner');
+    if (sp) sp.style.display = 'block';
+
+    // disable the button so it can't be clicked twice
+    var btn = document.querySelector('#uploadButtonDiv input[type="button"]');
+    if (btn) { btn.disabled = true; btn.classList.add('disabled'); btn.value = 'Working...'; }
+
+    // flag that submit was clicked
+    var form = document.getElementById('uploadForm') || document.querySelector('form');
+    if (form && form.elements.namedItem('forecastClicked')) {
+      form.elements.namedItem('forecastClicked').value = 'true';
+    }
+
+    // give the browser a moment to paint the spinner, then submit
+    setTimeout(function () { form.submit(); }, 50);
+  }
+
     function convertDate(inputFormat) {
         var date = new Date(inputFormat);
         return isNaN(date.getTime()) ? null : date;
