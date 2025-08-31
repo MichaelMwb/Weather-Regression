@@ -22,4 +22,5 @@ This project combines statistical research with a web application to explore the
 
 ## 📄 Full Report
 For a detailed explanation of the methods, results, and analysis, see the full report:  
-👉 [Weather Forecasting Report (PDF)](report.pdf)
+👉[Full Research Paper (PDF)](https://github.com/MichaelMwb/weather-regression/raw/main/Final_Research_Paper.pdf)
+
